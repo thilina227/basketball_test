@@ -1,0 +1,22 @@
+[
+  {
+    "model": "league.player",
+    "fields": {
+      "name": "John",
+      "height": 5.8,
+      "averageScore": 10,
+      "team": 1,
+      "playerId": 1
+    }
+  },
+  {
+    "model": "league.player",
+    "fields": {
+      "name": "Paul",
+      "height": 5.4,
+      "averageScore": 8,
+      "team": 2,
+      "playerId": 2
+    }
+  }
+]

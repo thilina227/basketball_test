@@ -1,0 +1,15 @@
+[
+    {
+    "model": "league.team",
+    "fields": {
+      "name": "Giants"
+    }
+  },
+  {
+    "model": "league.team",
+    "fields": {
+      "name": "Titans"
+    }
+  }
+
+]

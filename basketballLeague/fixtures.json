@@ -1,0 +1,77 @@
+[
+  {
+    "model": "league.team",
+    "fields": {
+      "name": "Giants"
+    }
+  },
+  {
+    "model": "league.team",
+    "fields": {
+      "name": "Titans"
+    }
+  },
+  {
+    "model": "league.player",
+    "fields": {
+      "name": "John",
+      "height": 5.8,
+      "averageScore": 10,
+      "team": 1,
+      "playerId": 1
+    }
+  },
+  {
+    "model": "league.player",
+    "fields": {
+      "name": "Paul",
+      "height": 5.4,
+      "averageScore": 8,
+      "team": 2,
+      "playerId": 2
+    }
+  },
+  {
+    "model": "league.league",
+    "leagueId": 1,
+    "fields": {
+      "name": "2021 Summer"
+    }
+  },
+  {
+    "model": "league.round",
+    "roundId": 1,
+    "fields": {
+      "name": "Round 1",
+      "league" : 1
+    }
+  },
+  {
+    "model": "league.game",
+    "gameId": 1,
+    "fields": {
+      "round": 1,
+      "firstTeam": 1,
+      "secondTeam": 2,
+      "winningTeam": 1,
+      "firstTeamScore": 20,
+      "secondTeamScore": 21
+    }
+  },
+  {
+    "model": "league.playerscorebygame",
+    "fields": {
+      "game": 1,
+      "player": 1,
+      "score": 5
+    }
+  },
+  {
+    "model": "league.playerscorebygame",
+    "fields": {
+      "game": 1,
+      "player": 2,
+      "score": 3
+    }
+  }
+]

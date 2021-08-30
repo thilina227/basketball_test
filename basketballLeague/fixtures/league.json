@@ -1,0 +1,9 @@
+[
+  {
+    "model": "league.league",
+    "leagueId": 1,
+    "fields": {
+      "name": "2021 Summer"
+    }
+  }
+]
