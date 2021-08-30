@@ -22,3 +22,9 @@ python manage.py loaddata fixtures.json
 ```
 python manage.py runserver
 ```
+
+# TODO
+- Add authentication and roles
+- Implement tests
+- Add more sample data
+- Implement frontend
