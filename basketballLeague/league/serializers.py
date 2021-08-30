@@ -5,10 +5,11 @@ from django.contrib.auth.models import User
 
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.IntegerField(read_only=True)
+    players = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='player-detail')
 
     class Meta:
         model = Team
-        fields = '__all__'
+        fields = ['id', 'name', 'players']
 
     def create(self, validated_data):
         return Team.objects.create(**validated_data)
@@ -38,27 +39,9 @@ class PlayerSerializer(serializers.HyperlinkedModelSerializer):
         return instance
 
 
-class PlayerSerializer(serializers.HyperlinkedModelSerializer):
-    playerId = serializers.IntegerField(read_only=True)
-
-    class Meta:
-        model = Player
-        fields = '__all__'
-
-    def create(self, validated_data):
-        return Player.objects.create(**validated_data)
-
-    def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
-        instance.height = validated_data('height', instance.height)
-        instance.averageScore = validated_data('averageScore', instance.averageScore)
-        instance.team = validated_data('team', instance.team)
-        instance.save()
-        return instance
-
-
 class LeagueSerializer(serializers.HyperlinkedModelSerializer):
     leagueId = serializers.IntegerField(read_only=True)
+    rounds = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='round-detail')
 
     class Meta:
         model = League
@@ -75,6 +58,7 @@ class LeagueSerializer(serializers.HyperlinkedModelSerializer):
 
 class RoundSerializer(serializers.HyperlinkedModelSerializer):
     roundId = serializers.IntegerField(read_only=True)
+    games = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='game-detail')
 
     class Meta:
         model = Round

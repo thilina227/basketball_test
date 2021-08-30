@@ -14,7 +14,7 @@ class Player(models.Model):
     height = models.FloatField()
     averageScore = models.FloatField()
     # numberOfGames = models.FloatField()  # this can be retrieved by games model
-    team = models.ForeignKey(Team, null=True, on_delete=models.SET_NULL)
+    team = models.ForeignKey(Team, related_name='players', null=True, on_delete=models.SET_NULL)
     # TODO authentication with django user
     # user = models.ForeignKey('auth.user', on_delete=models.CASCADE)
 
@@ -33,7 +33,7 @@ class League(models.Model):
 class Round(models.Model):
     roundId = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, blank=True)
-    league = models.ForeignKey(League, on_delete=models.CASCADE)
+    league = models.ForeignKey(League, related_name='rounds', on_delete=models.CASCADE)
 
     def natural_key(self):
         return self.roundId
@@ -41,7 +41,7 @@ class Round(models.Model):
 
 class Game(models.Model):
     gameId = models.AutoField(primary_key=True)
-    round = models.ForeignKey(Round, on_delete=models.CASCADE)
+    round = models.ForeignKey(Round, related_name='games', on_delete=models.CASCADE)
     firstTeam = models.ForeignKey(Team, related_name="firstTeam", null=True, on_delete=models.SET_NULL)
     secondTeam = models.ForeignKey(Team, related_name="secondTeam", null=True, on_delete=models.SET_NULL)
     firstTeamScore = models.IntegerField()
