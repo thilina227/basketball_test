@@ -9,7 +9,7 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Team
-        fields = ['id', 'name', 'players']
+        fields = '__all__'
 
     def create(self, validated_data):
         return Team.objects.create(**validated_data)

@@ -1,8 +1,3 @@
-from django.shortcuts import render
-from rest_framework.views import APIView
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework import mixins
 from rest_framework import generics
 from .serializers import *
 from .models import *
@@ -23,6 +18,17 @@ class TeamDetail(generics.RetrieveUpdateDestroyAPIView):
 class PlayerList(generics.ListCreateAPIView):
     queryset = Player.objects.all()
     serializer_class = PlayerSerializer
+
+    def get_queryset(self):
+        queryset = Player.objects.all()
+        team = self.request.query_params.get('team')
+        avg_score = self.request.query_params.get('avg_score')
+
+        if team:
+            queryset = queryset.filter(team=team)
+        if avg_score:
+            queryset = queryset.filter(averageScore__gte=avg_score)
+        return queryset
 
 
 class PlayerDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -58,4 +64,3 @@ class GameList(generics.ListCreateAPIView):
 class GameDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
-
